@@ -1060,7 +1060,7 @@ step :: proc(vm: ^EVM) -> (err: Error = .None) {
 		panic("EIP-4844 is unsupported")
 	case .POP:
 		top := pop(&vm.stack.data)
-		record_gas(vm, base)
+		record_gas(vm, base) or_return
 		return
 	case .MLOAD:
 		mload(vm) or_return
@@ -1084,7 +1084,7 @@ step :: proc(vm: ^EVM) -> (err: Error = .None) {
 		gas(vm) or_return
 	case .JUMPDEST:
 		// no-op: just record gas
-		record_gas(vm, jumpdest)
+		record_gas(vm, jumpdest) or_return
 	case .TLOAD:
 		tload(vm) or_return
 	case .TSTORE:
@@ -1190,37 +1190,37 @@ step :: proc(vm: ^EVM) -> (err: Error = .None) {
 	case .DUP16:
 		dup_n(vm, 16) or_return
 	case .SWAP1:
-		swap_n(vm, 1)
+		swap_n(vm, 1) or_return
 	case .SWAP2:
-		swap_n(vm, 2)
+		swap_n(vm, 2) or_return
 	case .SWAP3:
-		swap_n(vm, 3)
+		swap_n(vm, 3) or_return
 	case .SWAP4:
-		swap_n(vm, 4)
+		swap_n(vm, 4) or_return
 	case .SWAP5:
-		swap_n(vm, 5)
+		swap_n(vm, 5) or_return
 	case .SWAP6:
-		swap_n(vm, 6)
+		swap_n(vm, 6) or_return
 	case .SWAP7:
-		swap_n(vm, 7)
+		swap_n(vm, 7) or_return
 	case .SWAP8:
-		swap_n(vm, 8)
+		swap_n(vm, 8) or_return
 	case .SWAP9:
-		swap_n(vm, 9)
+		swap_n(vm, 9) or_return
 	case .SWAP10:
-		swap_n(vm, 10)
+		swap_n(vm, 10) or_return
 	case .SWAP11:
-		swap_n(vm, 11)
+		swap_n(vm, 11) or_return
 	case .SWAP12:
-		swap_n(vm, 12)
+		swap_n(vm, 12) or_return
 	case .SWAP13:
-		swap_n(vm, 13)
+		swap_n(vm, 13) or_return
 	case .SWAP14:
-		swap_n(vm, 14)
+		swap_n(vm, 14) or_return
 	case .SWAP15:
-		swap_n(vm, 15)
+		swap_n(vm, 15) or_return
 	case .SWAP16:
-		swap_n(vm, 16)
+		swap_n(vm, 16) or_return
 	case .SELFBALANCE,
 	     .LOG0,
 	     .LOG1,
